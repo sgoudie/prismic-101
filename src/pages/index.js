@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Nav from '../components/Nav'
 
-const Post = ({ data: { prismicLandingPage } }) => {
-  const { data } = prismicLandingPage
+const Post = ({ data: { prismicHomepage } }) => {
+  const { data } = prismicHomepage
   return (
     <React.Fragment>
+      <Nav />
       <h1>{data.title.text}</h1>
       <div dangerouslySetInnerHTML={{ __html: data.content.html }} />
     </React.Fragment>
@@ -14,9 +16,8 @@ const Post = ({ data: { prismicLandingPage } }) => {
 export default Post
 
 export const pageQuery = graphql`
-  query LandingQuery {
-    prismicLandingPage {
-      uid
+  query HomepageQuery {
+    prismicHomepage {
       data {
         title {
           text
